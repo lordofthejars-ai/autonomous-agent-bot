@@ -2,12 +2,11 @@ package org.acme.ai;
 
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
-import dev.langchain4j.service.V;
 import io.quarkiverse.langchain4j.RegisterAiService;
 import io.quarkiverse.langchain4j.ToolBox;
 
 @RegisterAiService
-public interface MarketingCampaignGenerator {
+public interface MarketingCampaign {
 
     @SystemMessage("""
             You need to create a marketing message promoting the given product.
@@ -31,6 +30,6 @@ public interface MarketingCampaignGenerator {
             The message cannot contain more than 225 characters so it needs to be short and concise.
             """)
     @ToolBox(ProductTools.class)
-    String message(String message);
+    String generate(String message);
 
 }

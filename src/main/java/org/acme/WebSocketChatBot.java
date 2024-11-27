@@ -8,7 +8,7 @@ import jakarta.inject.Inject;
 import org.acme.persistence.Product;
 
 @ApplicationScoped
-@WebSocket(path = "/websocket")
+@WebSocket(endpointId = "announcements", path = "/websocket")
 public class WebSocketChatBot {
 
     @Startup
@@ -33,8 +33,6 @@ public class WebSocketChatBot {
 
         product.persist();
     }
-
-    public record ChatMessage (String type, long id, long replyTo, String name, String message) {}
 
     @Inject
     MessageOperations messageOperations;

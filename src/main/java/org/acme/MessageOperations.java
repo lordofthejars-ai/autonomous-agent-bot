@@ -22,7 +22,7 @@ public class MessageOperations {
     @Inject
     SentimentAnalyzer sentimentAnalyzer;
 
-    public WebSocketChatBot.ChatMessage reply(WebSocketChatBot.ChatMessage chatMessage) {
+    public ChatMessage reply(ChatMessage chatMessage) {
 
         final Message m = Message.findByPostId(chatMessage.replyTo());
         String message = updateMessage(chatMessage, m);
@@ -52,7 +52,7 @@ public class MessageOperations {
         }
     }
 
-    private static String updateMessage(WebSocketChatBot.ChatMessage chatMessage, Message m) {
+    private static String updateMessage(ChatMessage chatMessage, Message m) {
         String message = chatMessage.message();
         Reply reply = new Reply(chatMessage.name(), message);
 
@@ -60,13 +60,11 @@ public class MessageOperations {
         return message;
     }
 
-    public WebSocketChatBot.ChatMessage newPost(WebSocketChatBot.ChatMessage chatMessage) {
+    public ChatMessage newPost(ChatMessage chatMessage) {
 
         final Message message = new Message(chatMessage.id(),
                 chatMessage.name(),
                 chatMessage.message());
-
-        //Gauge
 
         message.persist();
 

@@ -13,7 +13,7 @@ public class MessageOperationsTest {
     @Test
     public void shouldCreateAMarketingMessage() {
 
-        WebSocketChatBot.ChatMessage message = new WebSocketChatBot.ChatMessage(
+        ChatMessage message = new ChatMessage(
                 "post", 1, 0, "Alex",
                 "create a message for CoolTV product, focusing on dimension, resolution and short description features.");
 
