@@ -21,13 +21,23 @@ postBtn.addEventListener("click", () => {
 });
 
 ws.onmessage = (event) => {
+
   const data = JSON.parse(event.data);
+  alert(data)
   if (data.type === "post") {
     addPostToFeed(data);
   } else if (data.type === "reply") {
     addReplyToPost(data);
   }
 };
+
+function ping() {
+  ws.send(
+      JSON.stringify({
+        type: "ping",
+      })
+    );
+}
 
 function addPostToFeed({ id, name, message }) {
   const postDiv = document.createElement("div");
