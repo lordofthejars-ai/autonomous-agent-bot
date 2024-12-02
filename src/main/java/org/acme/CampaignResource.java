@@ -48,8 +48,8 @@ public class CampaignResource {
 
         // Sends to connections to "our tweeter"/announcements portal to show the new campaign
         final Collection<WebSocketConnection> announcements = connections.findByEndpointId("announcements");
-        System.out.println(announcements.isEmpty());
-        announcements.forEach(c -> c.sendText(chatMessage));
+
+        announcements.forEach(c -> c.sendTextAndAwait(chatMessage));
 
         return new Response("Campaign with %s id created.".formatted(chatMessage.id()));
     }

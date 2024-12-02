@@ -40,8 +40,6 @@ public class WebSocketChatBot {
     @OnTextMessage(broadcast = true)
     public ChatMessage onMessage(ChatMessage message) {
 
-        System.out.println(message.type());
-
         return switch (message.type()) {
             case "post" -> messageOperations.newPost(message);
             case "reply" -> messageOperations.reply(message);

@@ -30,6 +30,10 @@ public class Message extends PanacheMongoEntity {
         update();
     }
 
+    public static List<Message> findMessagesWithPositiveComments() {
+        return find("{'positiveReviews': {'$gt':2}}").list();
+    }
+
     public static void incrementPositive(long postId) {
         update("{'$inc': {'positiveReviews': 1}}")
                 .where("postId", postId);

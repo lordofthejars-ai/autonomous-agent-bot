@@ -1,6 +1,7 @@
 package org.acme;
 
 import io.quarkus.test.junit.QuarkusTest;
+import java.util.List;
 import org.acme.persistence.Message;
 import org.acme.persistence.Reply;
 import org.assertj.core.api.Assertions;
@@ -32,6 +33,23 @@ public class MessageTest {
 
         assertThat(byPostId.replies).hasSize(1);
 
+
+    }
+
+    @Test
+    public void shouldFindPositiveMessages() {
+
+        Message m = new Message(3, "A", "B");
+        m.persist();
+
+        m.positiveReviews++;
+        m.positiveReviews++;
+        m.positiveReviews++;
+
+        m.update();
+
+        List<Message> messages = Message.findMessagesWithPositiveComments();
+        assertThat(messages).hasSize(1);
 
     }
 

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Insert a default message into the text area
   defaultMessageBtn.addEventListener("click", () => {
-    messageInput.value = "Hello, this is a default message!";
+    messageInput.value = "create a message for CoolTV product, focusing on dimension, resolution and short description features. Not necessary to show the price.";
   });
 
   // Function to send message to server

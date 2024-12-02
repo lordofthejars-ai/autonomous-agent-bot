@@ -23,7 +23,7 @@ postBtn.addEventListener("click", () => {
 ws.onmessage = (event) => {
 
   const data = JSON.parse(event.data);
-  alert(data)
+
   if (data.type === "post") {
     addPostToFeed(data);
   } else if (data.type === "reply") {
@@ -90,4 +90,16 @@ function addReplyToPost({ replyTo, name, message }) {
   replyDiv.className = "reply";
   replyDiv.innerHTML = `<strong>${name}:</strong> ${message}`;
   postDiv.appendChild(replyDiv);
+}
+
+function copyText(button) {
+  // Find the text to copy (previous sibling of the button)
+  const textToCopy = button.previousElementSibling.textContent;
+
+  // Copy the text to clipboard
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    showCopyMessage();
+  }).catch(err => {
+    console.error('Failed to copy text: ', err);
+  });
 }
