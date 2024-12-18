@@ -1,0 +1,6 @@
+= Autonomous Agent Bot
+
+The video of the demo is located at https://youtu.be/POcNZYRKjT4
+
+Endpoints are: http://localhost:8080 for Twitter clone and the Admin console http://localhost:8080/admin.html
+
